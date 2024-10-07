@@ -1,9 +1,34 @@
 import React from 'react'
+import { createBrowserRouter } from 'react-router-dom'
+import Home from '../pages/Home'
+import App from '../App'
+import ExplorePage from '../pages/ExplorePage'
+import DetailPage from '../pages/DetailPage'
+import SearchPage from '../pages/SearchPage'
 
-const Route = () => {
-  return (
-    <div>Route</div>
-  )
-}
-
+const Route = createBrowserRouter([
+    {
+        path:"/",
+        element:<App/>,
+        children:[
+            {
+                path:"",
+                element:<Home/>
+            },
+            {
+                path:":explore",
+                element:<ExplorePage/>
+            },
+            {
+                path:":explore/:id",
+                element:<DetailPage/>
+            },
+            {
+                path:"/search",
+                element:<SearchPage/>
+            },
+        ]
+    }
+])
+ 
 export default Route
